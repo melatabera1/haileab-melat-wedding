@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<title>ሀይለአብ እሸቱ እና ሜላት አበራ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- PRELOAD THE MAIN BACKGROUND IMAGE TO MAKE IT LOAD INSTANTLY -->
+<link rel="preload" as="image" href="https://user49388.na.imgto.link/public/20261030/9d9fdb5a3c42e684ad3e84a4-gemini-generated-image-1r18jm1r18jm1r18.avif">
+<link rel="preload" as="image" href="https://user49388.na.imgto.link/public/20261030/420c2f5015e604374f874c9a-gemini-generated-image-vhizozvhizozvhiz.avif">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:wght@400;500&display=swap">
+
+<style>
+/* ─── Design tokens (Soft Light Mode) ─────────────────────────────── */
+:root {
+  /* Soft burgundy backgrounds */
+  --bg-light:    #F6EAEB;
+  --bg-mid:      #EBD6D9;
+  
+  /* Text and Accents */
+  --bg-dark:     #4A151C;
+  --gold:        #D4AF37;
+  --gold-light:  #D4AF7A;
+  --ivory:       #F8F5EE;
+  --charcoal:    #2A1A1C;
+  
+  /* The deep burgundy accent */
+  --accent:      #7d0715;
+
+  /* Burgundy envelope shades based on #7d0715 */
+  --env-main:    #930031;
+  --env-left:    #7a0028;
+  --env-right:   #85002c;
+  --env-top:     #4a0017;
+  --env-back:    #630020;
+
+  /* General structural colors */
+  --bg:          var(--bg-light);
+  --surface:     #ffffff;
+  --surface-alt: var(--bg-mid);
+  --fg:          var(--charcoal);
+  --fg-muted:    #5c4044;
+
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-body:    'Noto Serif Ethiopic', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+
+/* ─── COVER PAGE (Fade out transition) ─── */
+#cover {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  
+  /* Soft burgundy overlay with increased image visibility */
+  background-image: 
+    linear-gradient(to bottom, rgba(171, 102, 115, 0.4) 0%, rgba(92, 5, 15, 0.65) 100%),
+    url('https://user49388.na.imgto.link/public/20261030/420c2f5015e604374f874c9a-gemini-generated-image-vhizozvhizozvhiz.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  
+  /* Fade transition when closing the cover */
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+#cover.gone {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cover-orthodox-artifact {
+  margin-bottom: 30px;
+  z-index: 10;
+  position: relative;
+  animation: floatArtifact 4s ease-in-out infinite;
+}
+
+.cover-cross-img {
+  height: 180px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* Magically removes the light background from the image */
+  filter: drop-shadow(0 8px 20px rgba(125,7,21,0.4)); 
+}
+
+@keyframes floatArtifact {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.cover-filigree {
+  position: absolute;
+  width: 90px; height: 90px;
+  opacity: 0.4; 
+  pointer-events: none;
+}
+.cover-filigree.tl { top: 12px; left: 12px; }
+.cover-filigree.tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.cover-filigree.bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.cover-filigree.br { bottom: 12px; right: 12px; transform: scale(-1,-1); }
+
+
+/* ─── 3D ENVELOPE (From Standalone Code) ─── */
+.envelope-wrapper {
+  position: relative;
+  width: min(90vw, 450px);
+  height: 300px;
+  perspective: 1200px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 15;
+  filter: drop-shadow(0 15px 35px rgba(125, 7, 21, 0.25)); 
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Back wall of the envelope */
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: var(--env-back);
+  border-radius: 4px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* ─── INVITATION CARD ─── */
+.env-card {
+  position: absolute;
+  inset: 12px;
+  background: var(--ivory);
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.5); /* Gold border */
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  /* Transition waits 0.35s for the flap to open first */
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+}
+
+/* Slide up effect when open */
+.envelope-wrapper.open .env-card {
+  transform: translateY(-160px);
+}
+
+/* Card Typography */
+.env-card-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.env-card-names {
+  font-family: var(--font-body);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--env-main);
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(147,0,49,0.1);
+}
+
+/* ─── ENVELOPE FLAPS ─── */
+.env-flap-left {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 51%;
+  background: var(--env-left);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  z-index: 3;
+}
+
+.env-flap-right {
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 51%;
+  background: var(--env-right);
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  z-index: 3;
+}
+
+.env-flap-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 65%;
+  background: var(--env-main);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  z-index: 4;
+}
+
+/* Top Flap (Animated) */
+.env-flap-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 60%;
+  background: var(--env-top);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s 0.2s;
+  z-index: 5;
+}
+
+/* Fold back the top flap when open */
+.envelope-wrapper.open .env-flap-top {
+  transform: rotateX(180deg);
+  z-index: 1; /* Drops behind the card once fully open */
+}
+
+/* ─── GOLD SEAL ─── */
+.env-seal {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle at 30% 30%, #f3e5ab, #D4AF37);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.4);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.env-seal::after {
+  content: 'H&M';
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ─── CLICK HINT ─── */
+.click-hint {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-style: italic;
+  /* Updated to gold with a subtle shadow so it pops on the new burgundy background */
+  color: var(--gold-light);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  animation: tapPulse 2s ease infinite;
+  transition: opacity 0.3s;
+}
+
+.envelope-wrapper.open .click-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes tapPulse {
+  0%,100% { opacity: 0.45; }
+  50%     { opacity: 0.95; }
+}
+
+/* ─── Particles canvas ─── */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--bg-light);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.7; 
+  transform: scale(1.05);
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1.12); }
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(246,234,235,0.2) 0%,
+    rgba(246,234,235,0.5) 50%,
+    rgba(246,234,235,0.95) 100%
+  );
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 80px max(16px, env(safe-area-inset-left, 0px));
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  letter-spacing: 0.18em;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero-names {
+  font-family: var(--font-body);
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 1.1s ease 0.6s forwards;
+}
+
+/* Stacked vertical layout: groom / & / bride */
+.hero-names-stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  line-height: 1.15;
+}
+
+.hero-name-groom,
+.hero-name-bride {
+  display: block;
+  font-size: clamp(2rem, 7vw, 4.2rem);
+}
+
+.hero-ampersand-center {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  color: var(--gold);
+  line-height: 1.1;
+  margin: 2px 0;
+}
+
+.hero-ampersand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.62em;
+  color: var(--gold);
+  display: inline-block;
+  margin: 0 0.18em;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.hero-names-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  color: var(--fg-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 1.1s ease 0.85s forwards;
+}
+
+.hero-divider {
+  width: 80px;
+  height: 1.5px;
+  background: var(--gold);
+  margin: 0 auto 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.1s forwards;
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: var(--fg);
+  max-width: 480px;
+  margin: 0 auto 52px;
+  line-height: 2;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.3s forwards;
+}
+
+.hero-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  padding: 12px 28px;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  letter-spacing: 0.06em;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.5s forwards;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.hero-date-pill .dot {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s ease 2s forwards;
+}
+
+.hero-scroll span {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+}
+
+.scroll-line {
+  width: 1.5px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.1); }
+}
+
+/* ─── SECTION BASE ─── */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.section-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding-left:  max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 90px;
+}
+
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.16em;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-body);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  text-wrap: balance;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.section-rule {
+  width: 54px;
+  height: 1.5px;
+  background: var(--gold);
+  margin: 20px auto 48px;
+}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* ─── QUOTE SECTION ─── */
+.quote-section {
+  background: var(--bg-mid);
+}
+
+.quote-section .section-inner {
+  text-align: center;
+}
+
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--gold);
+  line-height: 0.6;
+  display: block;
+  margin-bottom: 24px;
+  opacity: 0.7;
+}
+
+.quote-text {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  color: var(--fg);
+  line-height: 2.1;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.quote-ref {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* ─── COUNTDOWN ─── */
+.countdown-section {
+  background: var(--ivory);
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cd-unit {
+  background: #ffffff;
+  border: 1px solid rgba(193, 154, 91, 0.3);
+  border-radius: 12px;
+  padding: 24px 20px 18px;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.cd-unit::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold-light), var(--gold));
+}
+
+.cd-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
+  display: block;
+  letter-spacing: -0.02em;
+}
+
+.cd-label {
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── INVITATION CARD (ARCHED DESIGN) ─── */
+.invite-section {
+  background: var(--bg-dark); 
+}
+
+.invite-card {
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--ivory);
+  border-radius: 250px 250px 16px 16px; 
+  padding: 100px 30px 60px;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2);
+  text-align: center;
+  overflow: hidden;
+}
+
+.corner-leaf { position: absolute; width: 140px; height: 180px; pointer-events: none; }
+.corner-leaf.tl { top: -10px; left: -10px; }
+.corner-leaf.tr { top: -10px; right: -10px; transform: scaleX(-1); }
+.corner-leaf.bl { bottom: -10px; left: -10px; transform: scaleY(-1); }
+.corner-leaf.br { bottom: -10px; right: -10px; transform: scale(-1, -1); }
+
+.invite-names {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 2.6rem);
+  font-style: normal;
+  color: var(--bg-dark);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.invite-subtitle {
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.invite-divider {
+  width: 50px; height: 1.5px;
+  background: var(--gold);
+  margin: 0 auto 35px;
+}
+
+.invite-body {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: var(--charcoal);
+  line-height: 2.2;
+  text-align: center; 
+  direction: ltr; 
+  margin-bottom: 40px;
+  padding: 0 10px;
+}
+
+.invite-hosts {
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  text-align: center;
+  line-height: 2;
+}
+
+.invite-hosts strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+/* ─── DETAILS CARDS ─── */
+.details-section {
+  background: var(--bg-mid);
+}
+
+.details-church-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto 40px auto;
+  border-radius: 12px;
+  opacity: 0.85;
+  box-shadow: 0 8px 24px rgba(125,7,21,0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 0;
+}
+
+.detail-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid rgba(193, 154, 91, 0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.detail-icon {
+  width: 52px; height: 52px;
+  background: var(--bg-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 1.4rem;
+  border: 1px solid rgba(193, 154, 91, 0.3);
+}
+
+.detail-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.detail-card p {
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  line-height: 1.85;
+}
+
+.detail-card .gold-text {
+  color: var(--gold);
+  font-weight: 600;
+  display: block;
+  margin-top: 6px;
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 20px;
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.map-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ─── GALLERY ─── */
+.gallery-section {
+  background: var(--bg-light);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.gallery-item {
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 2/1; }
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.gallery-item:nth-child(1) { background: linear-gradient(135deg, var(--bg-mid) 0%, var(--bg-light) 40%, #C19A5B 100%); }
+.gallery-item:nth-child(2) { background: linear-gradient(160deg, var(--bg-light) 0%, #7d0715 100%); }
+.gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--bg-mid) 0%, #D4AF7A 100%); }
+.gallery-item:nth-child(4) { background: linear-gradient(160deg, var(--bg-light) 0%, #F0E0C4 100%); }
+.gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--bg-mid) 0%, var(--bg-light) 60%, #D4AF7A 100%); }
+.gallery-item:nth-child(6) { background: linear-gradient(160deg, #C19A5B 0%, #7d0715 100%); }
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 65%, rgba(125,7,21,0.2));
+  pointer-events: none;
+}
+
+/* ─── WISHES ─── */
+.wishes-section {
+  background: var(--ivory);
+}
+
+.wishes-form {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(193, 154, 91, 0.4);
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--fg);
+  text-align: right;
+  direction: rtl;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(125, 7, 21, 0.1);
+}
+
+.field textarea { resize: vertical; min-height: 100px; }
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+  letter-spacing: 0.02em;
+}
+
+.submit-btn:hover { background: #9c091a; transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+
+.wishes-wall {
+  max-width: 480px;
+  margin: 36px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wish-card {
+  background: #ffffff;
+  border: 1px solid rgba(193, 154, 91, 0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 20px;
+  text-align: right;
+  direction: rtl;
+  animation: fadeUp 0.5s ease forwards;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.wish-card p { font-size: 0.97rem; line-height: 1.9; color: var(--charcoal); }
+.wish-card .wish-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-top: 10px;
+  direction: ltr;
+  text-align: right;
+}
+
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 32px rgba(125,7,21,0.3);
+  z-index: 100;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ─── AUDIO TOGGLE ─── */
+.audio-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 150;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: 1.5px solid var(--gold);
+  color: var(--ivory);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.audio-toggle.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.audio-toggle:hover {
+  transform: scale(1.08);
+  background: #5c050f;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg-mid);
+  text-align: center;
+  padding: 56px max(16px, env(safe-area-inset-left, 0px));
+  padding-bottom: max(40px, env(safe-area-inset-bottom, 0px));
+  position: relative;
+  z-index: 1;
+}
+
+.footer-names {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.footer-sub {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ─── Orthodox ornament bands ─── */
+.orthodox-band {
+  background: var(--bg-light);
+  padding: 32px max(16px, env(safe-area-inset-left,0px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.orthodox-band .band-line {
+  flex: 1;
+  max-width: 200px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.orthodox-band svg { flex-shrink: 0; }
+
+/* ─── HELPERS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 540px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .cd-unit { min-width: 72px; padding: 18px 12px 14px; }
+  .invite-card { padding: 80px 24px 50px; border-radius: 180px 180px 12px 12px; }
+}
+
+/* SVG Fill Overrides for Dark Icons on Light Background */
+.orthodox-band svg rect, .orthodox-band svg circle {
+  stroke: var(--gold);
+}
+.orthodox-band svg rect[fill="#B8935A"], .orthodox-band svg circle[fill="#B8935A"] {
+  fill: var(--gold);
+}
+.orthodox-band svg circle[fill="#DFE8DC"] {
+  fill: var(--bg-mid);
+}
+.orthodox-band svg circle[fill="#D4AF7A"] {
+  fill: var(--accent);
+}
+.cover-filigree path, .cover-filigree ellipse, .cover-filigree circle {
+  stroke: var(--gold);
+}
+</style>
+</head>
+<body>
+
+<!-- ─── COVER PAGE WITH PHOTO AND 3D ENVELOPE ─── -->
+<div id="cover" role="button" aria-label="ለመግባት ይጫኑ" tabindex="0">
+
+  <div class="cover-bg-shimmer"></div>
+
+  <!-- Decorative Filigrees -->
+  <svg class="cover-filigree tl" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M8,90 C16,55 14,28 54,8" stroke="#C19A5B" stroke-width="1.5"/>
+    <ellipse cx="18" cy="68" rx="9" ry="4.5" fill="#C19A5B" opacity="0.8" transform="rotate(-35 18 68)"/>
+    <ellipse cx="30" cy="46" rx="8" ry="4" fill="#7d0715" opacity="0.6" transform="rotate(-10 30 46)"/>
+    <ellipse cx="42" cy="26" rx="7" ry="3.5" fill="#C19A5B" opacity="0.6" transform="rotate(20 42 26)"/>
+    <circle cx="54" cy="10" r="3.5" fill="#7d0715" opacity="0.7"/>
+    <circle cx="8" cy="90" r="2.5" fill="#C19A5B" opacity="0.6"/>
+  </svg>
+  <svg class="cover-filigree tr" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M8,90 C16,55 14,28 54,8" stroke="#C19A5B" stroke-width="1.5"/>
+    <ellipse cx="18" cy="68" rx="9" ry="4.5" fill="#C19A5B" opacity="0.8" transform="rotate(-35 18 68)"/>
+    <ellipse cx="30" cy="46" rx="8" ry="4" fill="#7d0715" opacity="0.6" transform="rotate(-10 30 46)"/>
+    <ellipse cx="42" cy="26" rx="7" ry="3.5" fill="#C19A5B" opacity="0.6" transform="rotate(20 42 26)"/>
+    <circle cx="54" cy="10" r="3.5" fill="#7d0715" opacity="0.7"/>
+  </svg>
+  <svg class="cover-filigree bl" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M8,90 C16,55 14,28 54,8" stroke="#C19A5B" stroke-width="1.5"/>
+    <ellipse cx="18" cy="68" rx="9" ry="4.5" fill="#C19A5B" opacity="0.8" transform="rotate(-35 18 68)"/>
+    <ellipse cx="30" cy="46" rx="8" ry="4" fill="#7d0715" opacity="0.6" transform="rotate(-10 30 46)"/>
+    <circle cx="54" cy="10" r="3.5" fill="#7d0715" opacity="0.7"/>
+  </svg>
+  <svg class="cover-filigree br" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M8,90 C16,55 14,28 54,8" stroke="#C19A5B" stroke-width="1.5"/>
+    <ellipse cx="18" cy="68" rx="9" ry="4.5" fill="#C19A5B" opacity="0.8" transform="rotate(-35 18 68)"/>
+    <ellipse cx="30" cy="46" rx="8" ry="4" fill="#7d0715" opacity="0.6" transform="rotate(-10 30 46)"/>
+    <circle cx="54" cy="10" r="3.5" fill="#7d0715" opacity="0.7"/>
+  </svg>
+
+  <!-- THE INTERACTIVE 3D ENVELOPE -->
+  <div class="envelope-wrapper" id="envelope-wrapper">
+    <div class="envelope">
+      
+      <div class="env-back"></div>
+      
+      <div class="env-card">
+        <div style="font-size: 2.2rem; color: var(--gold); margin-bottom: 5px; line-height: 1;">☨</div>
+        <div class="env-card-eyebrow">— የሠርግ ጥሪ —</div>
+        <div class="env-card-names" style="display:flex;flex-direction:column;align-items:center;gap:0;line-height:1.2;">
+          <span>ሀይለአብ እሸቱ</span>
+          <span style="font-size:0.55em;color:var(--gold);font-family:var(--font-display);font-style:italic;">&amp;</span>
+          <span>ሜላት አበራ</span>
+        </div>
+        <div class="env-card-eyebrow" style="margin-top:16px; font-size: 0.8rem;">November 15, 2026</div>
+      </div>
+      
+      <div class="env-flap-left"></div>
+      <div class="env-flap-right"></div>
+      <div class="env-flap-bottom"></div>
+      
+      <div class="env-flap-top">
+        <div class="env-seal"></div>
+      </div>
+
+    </div>
+    
+    <p class="click-hint">✦ &nbsp; ለማስከፈት ይጫኑ &nbsp; ✦</p>
+  </div>
+
+</div>
+
+<!-- ─── PARTICLES ─── -->
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- FETCHPRIORITY ADDED HERE TO LOAD THE BACKGROUND IMAGE FAST -->
+    <img src="https://user49388.na.imgto.link/public/20261030/9d9fdb5a3c42e684ad3e84a4-gemini-generated-image-1r18jm1r18jm1r18.avif" alt="Ethiopian Traditional Kaba" fetchpriority="high" onerror="this.style.display='none'">
+  </div>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">— የሠርግ ጥሪ —</p>
+
+    <h1 class="hero-names hero-names-stacked">
+      <span class="hero-name-groom">ሀይለአብ እሸቱ</span>
+      <span class="hero-ampersand-center">እና</span>
+      <span class="hero-name-bride">ሜላት አበራ</span>
+    </h1>
+
+    <p class="hero-names-en">Haileab Eshetu &amp; Melat Abera</p>
+
+    <div class="hero-divider"></div>
+
+    <p class="hero-tagline">
+      በህይወታችን ልዩ የሆነውን ቀን አብራችሁን እንድታሳልፉ<br>
+      በክብር ተጠርታችኋል።
+    </p>
+
+    <div class="hero-date-pill">
+      <span class="dot"></span>
+      ህዳር 6, 2019 ዓ.ም &nbsp;·&nbsp; November 15, 2026
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ─── Orthodox ornament band ─── -->
+<div class="orthodox-band" aria-hidden="true">
+  <div class="band-line"></div>
+  <svg width="44" height="58" viewBox="0 0 44 58" fill="none">
+    <rect x="19" y="2" width="6" height="54" rx="1.5" fill="#C19A5B" opacity="0.9"/>
+    <rect x="2" y="18" width="40" height="6" rx="1.5" fill="#C19A5B" opacity="0.9"/>
+    <circle cx="22" cy="21" r="5" fill="#DFE8DC" stroke="#C19A5B" stroke-width="1.5"/>
+    <circle cx="22" cy="21" r="2.5" fill="#C19A5B"/>
+    <circle cx="22" cy="4"  r="3.5" fill="#7d0715" opacity="0.8"/>
+    <circle cx="22" cy="54" r="3.5" fill="#7d0715" opacity="0.8"/>
+    <circle cx="4"  cy="21" r="3.5" fill="#7d0715" opacity="0.8"/>
+    <circle cx="40" cy="21" r="3.5" fill="#7d0715" opacity="0.8"/>
+  </svg>
+  <div class="band-line"></div>
+</div>
+
+<!-- ─── QUOTE ─── -->
+<section class="quote-section">
+  <div class="section-inner" style="text-align:center;">
+    <div class="reveal">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">
+        ስለመሆኑም ከዚህ በኋላ አንድ ሥጋ ናቸው እንጂ ሁለት አይሆኑም፤
+        ስለዚህ እግዚአብሔር ያጣመረውን እንግዲህ ሰው አይለየውም።
+      </p>
+      <p class="quote-ref">— ማቴዎስ 19፡6 —</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COUNTDOWN ─── -->
+<section class="countdown-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">ቀኑ ሊደርስ</p>
+    <h2 class="section-title reveal">የቀረው ጊዜ</h2>
+    <div class="section-rule reveal"></div>
+    <div class="countdown-grid">
+      <div class="cd-unit reveal reveal-delay-1">
+        <span class="cd-num" id="cd-days">00</span>
+        <span class="cd-label">ቀናት</span>
+      </div>
+      <div class="cd-unit reveal reveal-delay-2">
+        <span class="cd-num" id="cd-hours">00</span>
+        <span class="cd-label">ሰዓታት</span>
+      </div>
+      <div class="cd-unit reveal reveal-delay-2">
+        <span class="cd-num" id="cd-mins">00</span>
+        <span class="cd-label">ደቂቃዎች</span>
+      </div>
+      <div class="cd-unit reveal reveal-delay-3">
+        <span class="cd-num" id="cd-secs">00</span>
+        <span class="cd-label">ሰኮንዶች</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INVITATION CARD (ARCHED DESIGN) ─── -->
+<section class="invite-section">
+  <div class="section-inner">
+    
+    <div class="invite-card reveal">
+      
+      <!-- Leaf corner motifs mirroring the screenshot -->
+      <svg class="corner-leaf tl" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,130 C20,90 50,40 100,0" stroke="#C19A5B" stroke-width="1.2" fill="none" />
+        <path d="M 10,110 C 15,100 25,100 25,110 C 25,120 15,120 10,110 Z" fill="#7d0715" opacity="0.8"/>
+        <path d="M 35,70 C 40,60 50,60 50,70 C 50,80 40,80 35,70 Z" fill="#C19A5B" opacity="0.8"/>
+        <path d="M 70,30 C 75,20 85,20 85,30 C 85,40 75,40 70,30 Z" fill="#7d0715" opacity="0.8"/>
+        <path d="M 45,95 C 40,90 40,80 45,80 C 50,80 55,90 45,95 Z" fill="#b3646f" opacity="0.6"/>
+      </svg>
+      <svg class="corner-leaf tr" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,130 C20,90 50,40 100,0" stroke="#C19A5B" stroke-width="1.2" fill="none" />
+        <path d="M 10,110 C 15,100 25,100 25,110 C 25,120 15,120 10,110 Z" fill="#7d0715" opacity="0.8"/>
+        <path d="M 35,70 C 40,60 50,60 50,70 C 50,80 40,80 35,70 Z" fill="#C19A5B" opacity="0.8"/>
+        <path d="M 70,30 C 75,20 85,20 85,30 C 85,40 75,40 70,30 Z" fill="#7d0715" opacity="0.8"/>
+        <path d="M 45,95 C 40,90 40,80 45,80 C 50,80 55,90 45,95 Z" fill="#b3646f" opacity="0.6"/>
+      </svg>
+      <svg class="corner-leaf bl" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,130 C20,90 50,40 100,0" stroke="#C19A5B" stroke-width="1.2" fill="none" />
+        <path d="M 10,110 C 15,100 25,100 25,110 C 25,120 15,120 10,110 Z" fill="#7d0715" opacity="0.8"/>
+        <path d="M 35,70 C 40,60 50,60 50,70 C 50,80 40,80 35,70 Z" fill="#C19A5B" opacity="0.8"/>
+        <path d="M 70,30 C 75,20 85,20 85,30 C 85,40 75,40 70,30 Z" fill="#7d0715" opacity="0.8"/>
+      </svg>
+      <svg class="corner-leaf br" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,130 C20,90 50,40 100,0" stroke="#C19A5B" stroke-width="1.2" fill="none" />
+        <path d="M 10,110 C 15,100 25,100 25,110 C 25,120 15,120 10,110 Z" fill="#7d0715" opacity="0.8"/>
+        <path d="M 35,70 C 40,60 50,60 50,70 C 50,80 40,80 35,70 Z" fill="#C19A5B" opacity="0.8"/>
+        <path d="M 70,30 C 75,20 85,20 85,30 C 85,40 75,40 70,30 Z" fill="#7d0715" opacity="0.8"/>
+      </svg>
+
+      <h2 class="invite-names" style="font-family:var(--font-body);font-size:clamp(1.6rem,5vw,2.2rem);color:var(--bg-dark);margin-bottom:16px;">ሠርግ</h2>
+      <div class="invite-divider"></div>
+
+      <p class="invite-body" style="font-size:clamp(0.9rem,2.4vw,1rem);line-height:2.2;max-width:100%;padding:0 28px;text-align:center;">
+        "ስለመሆኑም ከዚህ በኃላ አንድ ስጋ ናቸው እንጂ ሁለት አይሆኑም ስለዚህ እግዚአብሔር ያጣመረውን እንግዲህ ሰው አይለየውም"<br>
+        <span style="color:var(--gold);font-family:var(--font-display);font-style:italic;">ማቴ 19፡6</span>
+      </p>
+      <p class="invite-body" style="font-size:clamp(0.9rem,2.4vw,1rem);line-height:2.2;max-width:100%;padding:0 28px;text-align:center;margin-top:20px;">
+        የማክበር ሰላምታችንን እያቀረብን አቶ ሀይሌአብ እሸቱ እና የወ/ሪት ሜላት አበራ የሰርግ ስነ ስርዓት በእግዚአብሔር የመልካም ፈቃድ ህዳር 6/2019 ዓ.ም ስለሆነ በዚህ ዕለት ከለሊቱ 10፡00 ሰዓት ጀምሮ በደብረ ገነት ቅድስት ስላሴ ካቴድራል ቤተክርስቲያን እንዲያጅቡን እና ከዚያ መልስ በመኖሪያ ቤታችን የምናደርገውን የምሳ ግብዣ ላይ ከቀኑ 7፡00 ሰዓት ጀምሮ .......... ጋር ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በማክበር ጠርተንዎታል።
+      </p>
+
+      <p class="invite-hosts">
+        <strong>አክባሪዎች</strong>
+        ሀይለአብ እሸቱ እና ሜላት አበራ
+      </p>
+
+      <div class="invite-divider" style="margin-top:28px;"></div>
+      <p style="font-size:0.85rem;color:var(--charcoal);line-height:1.9;margin-top:16px;">
+        <span style="color:var(--gold);font-weight:600;">አድራሻ፡</span><br>
+        ጦር ሃይሎች ወደ ቶታል በሚወስደው መንገድ<br>
+        በደብረ ገነት ቅድስት ስላሴ ካቴድራል ቤተክርስቲያን
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DETAILS ─── -->
+<section class="details-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">📋 ዝርዝር</p>
+    <h2 class="section-title reveal">የፕሮግራም ዝርዝር</h2>
+    <div class="section-rule reveal"></div>
+
+    <!-- ADDED LOADING LAZY HERE SO IT DOESN'T SLOW DOWN THE TOP OF THE PAGE -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0_gxwrq6LBKqKvdOlZ0fxsvcOjIEd8Wr6fI5zPx5mIA&s=10" alt="Church" class="details-church-img reveal" loading="lazy">
+
+    <div class="details-grid">
+      <div class="detail-card reveal reveal-delay-1">
+        <div class="detail-icon">📅</div>
+        <h3>የሠርጉ ቀን</h3>
+        <p>
+          ህዳር 6, 2019 ዓ.ም
+          <span class="gold-text">November 15, 2026</span>
+        </p>
+      </div>
+
+      <div class="detail-card reveal reveal-delay-2">
+        <div class="detail-icon">
+          <svg width="28" height="36" viewBox="0 0 28 36" fill="none" aria-hidden="true">
+            <rect x="11.5" y="1" width="5" height="34" rx="1" fill="#C19A5B"/>
+            <rect x="2" y="11" width="24" height="5" rx="1" fill="#C19A5B"/>
+            <circle cx="14" cy="13.5" r="3.5" fill="var(--ivory)" stroke="#C19A5B" stroke-width="1.2"/>
+            <circle cx="14" cy="3" r="2.5" fill="#C19A5B"/>
+            <circle cx="14" cy="34" r="2.5" fill="#C19A5B"/>
+            <circle cx="3" cy="13.5" r="2.5" fill="#C19A5B"/>
+            <circle cx="25" cy="13.5" r="2.5" fill="#C19A5B"/>
+          </svg>
+        </div>
+        <span class="church-tag">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="4.5" y="0" width="3" height="12" rx="0.5" fill="#C19A5B"/><rect x="0" y="4.5" width="12" height="3" rx="0.5" fill="#C19A5B"/></svg>
+          ኢትዮጵያ ኦርቶዶክስ
+        </span>
+        <h3>ቅዱስ ቁርባን ሥነ-ሥርዓት</h3>
+        <p>
+          ደብረ ገነት ቅድስት ሥላሴ ካቴድራል ቤተክርስቲያን
+          <span class="gold-text">ከ 10:00 ሰዓት ጀምሮ</span>
+        <a class="map-btn" href="https://www.google.com/maps/search/ደብረ+ገነት+ቅድስት+ሥላሴ+ካቴድራል+አዲስ+አበባ" target="_blank" rel="noopener">
+          በካርታ ለማየት →
+        </a>
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Orthodox band ─── -->
+<div class="orthodox-band" aria-hidden="true">
+  <div class="band-line"></div>
+  <svg width="44" height="58" viewBox="0 0 44 58" fill="none">
+    <rect x="19" y="2" width="6" height="54" rx="1.5" fill="#C19A5B" opacity="0.9"/>
+    <rect x="2" y="18" width="40" height="6" rx="1.5" fill="#C19A5B" opacity="0.9"/>
+    <circle cx="22" cy="21" r="5" fill="#DFE8DC" stroke="#C19A5B" stroke-width="1.5"/>
+    <circle cx="22" cy="21" r="2.5" fill="#C19A5B"/>
+    <circle cx="22" cy="4"  r="3.5" fill="#7d0715" opacity="0.8"/>
+    <circle cx="22" cy="54" r="3.5" fill="#7d0715" opacity="0.8"/>
+    <circle cx="4"  cy="21" r="3.5" fill="#7d0715" opacity="0.8"/>
+    <circle cx="40" cy="21" r="3.5" fill="#7d0715" opacity="0.8"/>
+  </svg>
+  <div class="band-line"></div>
+</div>
+
+<!-- ─── GALLERY ─── -->
+<section class="gallery-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">ቅጽበቶች</p>
+    <h2 class="section-title reveal">የፍቅር ቅጽበቶች</h2>
+    <div class="section-rule reveal" style="background:var(--gold);"></div>
+
+    <div class="gallery reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&q=80&fit=crop" alt="Wedding couple" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80&fit=crop" alt="Wedding rings" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&q=80&fit=crop" alt="Wedding couple portrait" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1583939411023-14783179e581?w=600&q=80&fit=crop" alt="Wedding bouquet" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80&fit=crop" alt="Wedding celebration" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80&fit=crop" alt="Wedding couple" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WISHES ─── -->
+<section class="wishes-section">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">💌</p>
+    <h2 class="section-title reveal">ምኞቶን ያስቀምጡ</h2>
+    <div class="section-rule reveal"></div>
+
+    <form class="wishes-form reveal" id="wishes-form">
+      <div class="field">
+        <label for="wish-name">ስምዎ</label>
+        <input type="text" id="wish-name" placeholder="ስምዎን ያስገቡ" required>
+      </div>
+      <div class="field">
+        <label for="wish-text">ምኞትዎ / ቡራኬዎ</label>
+        <textarea id="wish-text" placeholder="ለጥንዶቹ የልብ ምኞትዎን ይጻፉ…" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">ምኞቴን ላክ 💚</button>
+    </form>
+
+    <div class="wishes-wall" id="wishes-wall"></div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p class="footer-names">Haileab Eshetu &amp; Melat Abera</p>
+  <p class="footer-sub">ህዳር 6, 2019 ዓ.ም &nbsp;·&nbsp; November 15, 2026 &nbsp;·&nbsp; አዲስ አበባ</p>
+</footer>
+
+<!-- ─── TOAST ─── -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ─── AUDIO PLAYER & TOGGLE ─── -->
+<div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px;"></div>
+<button id="audio-toggle" class="audio-toggle" aria-label="ድምጽ አጥፋ/አብራ" title="ሙዚቃ አብራ/አጥፋ">🔊</button>
+
+<script>
+/* ── YouTube Background Audio (LAZY LOADED FOR SPEED) ── */
+var player;
+var apiLoaded = false;
+const audioToggle = document.getElementById('audio-toggle');
+let isAudioPlaying = false;
+
+// We only inject the heavy YouTube script when needed
+function initYouTubeAPI() {
+  if (apiLoaded) return;
+  apiLoaded = true;
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+// YouTube calls this once its script loads
+window.onYouTubeIframeAPIReady = function() {
+  player = new YT.Player('youtube-player', {
+    height: '1',
+    width: '1',
+    videoId: 'nH-dDKcEnmQ', // Your Mezmur Video ID
+    playerVars: {
+      'playsinline': 1,
+      'controls': 0,
+      'disablekb': 1,
+      'rel': 0,
+      'showinfo': 0,
+      'iv_load_policy': 3
+    },
+    events: {
+      'onReady': function(event) {
+        // Automatically play when ready
+        event.target.playVideo();
+        audioToggle.classList.add('visible');
+        isAudioPlaying = true;
+      }
+    }
+  });
+}
+
+audioToggle.addEventListener('click', () => {
+  if (isAudioPlaying) {
+    player.pauseVideo();
+    audioToggle.textContent = '🔈';
+    isAudioPlaying = false;
+  } else {
+    player.playVideo();
+    audioToggle.textContent = '🔊';
+    isAudioPlaying = true;
+  }
+});
+
+/* ── Cover page & Interactive Envelope ── */
+const cover = document.getElementById('cover');
+const envelopeWrapper = document.getElementById('envelope-wrapper');
+document.body.style.overflow = 'hidden';
+
+function openInvitation(e) {
+  if (e) e.stopPropagation();
+  
+  // If the envelope is already open, don't re-trigger
+  if (envelopeWrapper.classList.contains('open')) return;
+  
+  // 1. Add "open" class to trigger the CSS fold and slide
+  envelopeWrapper.classList.add('open');
+
+  // 2. NOW WE LOAD YOUTUBE - keeps the initial page load super fast!
+  initYouTubeAPI();
+  
+  // 3. Wait exactly 1.1 seconds before fading out the cover
+  setTimeout(() => {
+    cover.classList.add('gone');
+    document.body.style.overflow = '';
+    
+    // Trigger scroll reveal on main page elements
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    }, 300);
+  }, 1100);
+}
+
+// Click events attached to both to ensure they trigger reliably
+envelopeWrapper.addEventListener('click', openInvitation);
+cover.addEventListener('click', openInvitation);
+cover.addEventListener('keydown', e => { 
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInvitation(); } 
+});
+
+/* ── Countdown ── */
+const target = new Date('2026-11-15T10:00:00+03:00');
+function tick() {
+  const diff = target - Date.now();
+  if (diff <= 0) { ['days','hours','mins','secs'].forEach(id => document.getElementById('cd-'+id).textContent = '00'); return; }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
+/* ── Scroll reveal ── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+
+/* ── Wishes ── */
+const form  = document.getElementById('wishes-form');
+const wall  = document.getElementById('wishes-wall');
+const toast = document.getElementById('toast');
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('wish-name').value.trim();
+  const text = document.getElementById('wish-text').value.trim();
+  if (!name || !text) return;
+
+  const card = document.createElement('div');
+  card.className = 'wish-card';
+  card.innerHTML = `<p>${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p><p class="wish-name">— ${name.replace(/</g,'&lt;')}</p>`;
+  wall.insertBefore(card, wall.firstChild);
+  form.reset();
+  showToast('እናመስግናለን! ምኞትዎ ተቀብለናል 🕊️');
+});
+
+/* ── Particle canvas ── */
+(function(){
+  const canvas = document.getElementById('particles-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const GOLD = 'rgba(193, 154, 91,';
+  const RED = 'rgba(125, 7, 21,'; // Burgundy particles for light mode
+
+  function randomParticle() {
+    const isRed = Math.random() > 0.5;
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H + H,
+      r: Math.random() * 3 + 1,
+      speed: Math.random() * 0.4 + 0.15,
+      opacity: Math.random() * 0.5 + 0.1,
+      color: isRed ? RED : GOLD,
+      drift: (Math.random() - 0.5) * 0.3,
+      twist: Math.random() * Math.PI * 2,
+      twistSpeed: (Math.random() - 0.5) * 0.02,
+    };
+  }
+
+  for (let i = 0; i < 45; i++) {
+    const p = randomParticle();
+    p.y = Math.random() * H; // scatter on load
+    particles.push(p);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.opacity + ')';
+      ctx.fill();
+      p.y -= p.speed;
+      p.x += p.drift + Math.sin(p.twist) * 0.3;
+      p.twist += p.twistSpeed;
+      if (p.y < -10) { Object.assign(p, randomParticle()); p.x = Math.random() * W; }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
