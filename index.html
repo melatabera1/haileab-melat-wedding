@@ -888,7 +888,7 @@ footer {
 }
 
 @media (max-width: 540px) {
-  .gallery { grid-template-columns: repeat(2, 1fr); }
+  . { grid-template-columns: repeat(2, 1fr); }
   .gallery-item:nth-child(1) { grid-column: span 2; }
   .cd-unit { min-width: 72px; padding: 18px 12px 14px; }
   .invite-card { padding: 80px 24px 50px; border-radius: 180px 180px 12px 12px; }
@@ -1204,60 +1204,6 @@ footer {
   </svg>
   <div class="band-line"></div>
 </div>
-
-<!-- ─── GALLERY ─── -->
-<section class="gallery-section">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">ቅጽበቶች</p>
-    <h2 class="section-title reveal">የፍቅር ቅጽበቶች</h2>
-    <div class="section-rule reveal" style="background:var(--gold);"></div>
-
-    <div class="gallery reveal">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&q=80&fit=crop" alt="Wedding couple" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80&fit=crop" alt="Wedding rings" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&q=80&fit=crop" alt="Wedding couple portrait" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1583939411023-14783179e581?w=600&q=80&fit=crop" alt="Wedding bouquet" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80&fit=crop" alt="Wedding celebration" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80&fit=crop" alt="Wedding couple" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── WISHES ─── -->
-<section class="wishes-section">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">💌</p>
-    <h2 class="section-title reveal">ምኞቶን ያስቀምጡ</h2>
-    <div class="section-rule reveal"></div>
-
-    <form class="wishes-form reveal" id="wishes-form">
-      <div class="field">
-        <label for="wish-name">ስምዎ</label>
-        <input type="text" id="wish-name" placeholder="ስምዎን ያስገቡ" required>
-      </div>
-      <div class="field">
-        <label for="wish-text">ምኞትዎ / ቡራኬዎ</label>
-        <textarea id="wish-text" placeholder="ለጥንዶቹ የልብ ምኞትዎን ይጻፉ…" required></textarea>
-      </div>
-      <button type="submit" class="submit-btn">ምኞቴን ላክ 💚</button>
-    </form>
-
-    <div class="wishes-wall" id="wishes-wall"></div>
-  </div>
-</section>
-
 <!-- ─── FOOTER ─── -->
 <footer>
   <p class="footer-names">Haileab Eshetu &amp; Melat Abera</p>
